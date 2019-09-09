@@ -1,15 +1,176 @@
 <template>
-  <div>
-    分类
+  <div class="wrapper">
+    <ul class="content">
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+      <li>内容</li>
+    </ul>
   </div>
 </template>
 
 <script>
+  import BScroll from 'better-scroll'
     export default {
         name: "Category",
+      data(){
+        return{
+          scroll:null
+        }
+      },
+      created() {
+
+      },
+      mounted() {
+        this.scroll=new BScroll(document.querySelector('.wrapper'),{})
+      }
     }
 </script>
 
 <style scoped>
-
+.wrapper{
+  height: 150px;
+  background: #ff5777;
+  overflow: hidden;
+}
 </style>
