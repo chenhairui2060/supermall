@@ -50,7 +50,7 @@
         methods: {
             refresh() {
                 console.log(('~~~~~~'))
-                //重新计算高度
+                //重新计算高度 刷新一次
                 this.scroll && this.scroll.refresh && this.scroll.refresh()
             },
             finishPullUp() {
@@ -63,6 +63,9 @@
             finishPullUp(){
                 this.scroll.finishPullUp()
             },
+            getScrollY:function () {
+                return this.scroll?this.scroll.y:0
+            }
             // ref
         },
         watch: {

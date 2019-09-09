@@ -5,8 +5,9 @@
         </nav-bar>
         <tab-control :titles="titles"
                      @tabClick="tabClick"
-                     ref="tabControl"
-                     :class="{fixed:isTabFixed}"></tab-control>
+                     ref="tabControlOne"
+                     v-show="isTabFixed"
+                     class="fixed"></tab-control>
         <scroll class="content"
                 ref="scroll"
                 :probe-type="3"
@@ -18,7 +19,7 @@
             <feature-view></feature-view>
             <tab-control :titles="titles"
                          @tabClick="tabClick"
-                         ref="tabControl"
+                         ref="tabControlTwo"
                          :class="{fixed:isTabFixed}"></tab-control>
             <goods-list :goods="showGoods"></goods-list>
         </scroll>
@@ -69,7 +70,8 @@
                 currentType: 'pop',
                 backTopShow: false,
                 tabOffestTop: 0,//tab-control距离顶部距离
-                isTabFixed:true,//是否吸顶
+                isTabFixed:false,//是否吸顶
+                saveY:0,//记录离开时距离顶部的距离
             }
         },
         methods: {
@@ -86,6 +88,8 @@
                         this.currentType = 'sell';
                         break
                 }
+                this.$refs.tabControlOne.currentIndex=index
+                this.$refs.tabControlTwo.currentIndex=index
             },
             backTop() {
                 // console.log('点击了')
@@ -94,12 +98,13 @@
             },
             //轮播图是否加载
             homeLoad(){
-                console.log(this.$refs.tabControl.$el.offsetTop)
+                console.log(this.$refs.tabControlTwo.$el.offsetTop)
+                this.tabOffestTop=this.$refs.tabControlTwo.$el.offsetTop
             },
             contentScroll(position) {
                 //控制返回顶部的显示隐藏
                 this.backTopShow = -position.y > 1000
-                this.isTabFixed=(-position)>this.tabOffestTop
+                this.isTabFixed=(-position.y)>this.tabOffestTop
             },
             loadMore() {
                 console.log('加载更多')
@@ -107,7 +112,6 @@
             },
             getHomeMulidata() {
                 getHomeMulidata().then(res => {
-                    // console.log(res)
                     this.banners = res.data.banner.list
                     this.recommends = res.data.recommend.list
                 })
@@ -137,6 +141,14 @@
             })
             //2.获取tabControl的offsettop
             // 所有的组件都有一个属性$el:用于获取组件中的元素
+        },
+        activated() {
+            this.$refs.scroll.scrollTo(0,this.saveY,0)
+            //进行一次刷新
+            this.$refs.scroll.refresh()
+        },
+        deactivated() {
+            this.saveY=this.$refs.scroll.getScrollY()
         }
     }
 </script>
@@ -150,25 +162,20 @@
     .home-nav {
         background: var(--color-tint);
         color: var(--color-background);
-        /*position: fixed;*/
-        /*left: 0;*/
-        /*top: 0;*/
-        /*right: 0;*/
-        /*z-index: 9;*/
     }
-
     /*.tab-control {*/
     /*    !*到达44的时候变成fixed*!*/
     /*    !*原生的时候生效*!*/
-    /*    position: sticky;*/
+    /*    position: fixed;*/
+    /*    left: 0;*/
     /*    top: 44px;*/
-    /*    z-index: 9;*/
+    /*    !*z-index: 9;*!*/
     /*}*/
     .fixed{
-        position: fixed;
+        position: absolute;
         top: 44px;
-        right: 0;
         left: 0;
+        right: 0;
         z-index: 9;
     }
     /*.content{*/
